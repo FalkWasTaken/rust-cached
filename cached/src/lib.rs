@@ -70,14 +70,11 @@ pub fn cached(_attr: TokenStream, input: TokenStream) -> TokenStream {
     // Modify the actual function
     let cached_function = quote! {
         #unsafety fn #ident(#inputs) -> #return_type {
-            // If a result from a previous call is stored, return the stored result
-            if let Some(&res) = #cache_ident.lock().unwrap().get(&#key_ident) {
-                return res;
-            }
-            // Store the result of the function block in `res` and insert it in the cache map 
-            let res = #block;
-            #cache_ident.lock().unwrap().insert(#key_ident, res);
-            res
+            *#cache_ident
+                .lock()
+                .unwrap()
+                .entry(#key_ident)
+                .or_insert_with(|| #block)
         }
     };
 
