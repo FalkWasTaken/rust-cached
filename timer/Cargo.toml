@@ -1,0 +1,15 @@
+[package]
+name = "timer"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dev-dependencies]
+trybuild = { version = "1.0.49", features = ["diff"] }
+
+[dependencies]
+syn = {version = "1.0.98", features = ["visit-mut", "full", "fold"]}
+quote = "1.0.20"
+proc-macro2 = "1.0.40"
+itertools = "0.10.3"

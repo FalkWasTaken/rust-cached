@@ -1,0 +1,19 @@
+[package]
+name = "rust_cached"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[workspace]
+
+[[bin]]
+name = "main"
+path = "main.rs"
+
+[dependencies]
+cached = { path = "cached" }
+timer = { path = "timer" }
+lazy_static = "1.4.0"
+itertools = "0.10.3"
+num = "0.4.0"
